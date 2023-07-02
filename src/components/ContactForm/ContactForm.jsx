@@ -3,7 +3,7 @@ import css from './ContactForm.module.css';
 import { useState } from 'react';
 
 import { useSelector, useDispatch } from 'react-redux';
-import { getVisibleContacts } from 'redux/selectors';
+import { getContacts } from 'redux/selectors';
 import { addContact } from 'redux/contactsSlice';
 
 const ContactForm = () => {
@@ -13,7 +13,7 @@ const ContactForm = () => {
   const nameInputId = nanoid();
   const numberInputId = nanoid();
 
-  const contacts = useSelector(getVisibleContacts);
+  const contacts = useSelector(getContacts);
   const dispatch = useDispatch();
 
   const handleChange = e => {

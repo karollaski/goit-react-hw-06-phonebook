@@ -3,18 +3,27 @@ import React from 'react';
 import css from './ContactList.module.css';
 
 import { useSelector, useDispatch } from 'react-redux';
-import { getVisibleContacts } from 'redux/selectors';
-import { deletContact } from 'redux/contactsSlice';
+import { getContacts, getFilter } from 'redux/selectors';
+import { deleteContact } from 'redux/contactsSlice';
 
 const ContactList = () => {
-  const contacts = useSelector(getVisibleContacts);
+  const contacts = useSelector(getContacts);
+  const filter = useSelector(getFilter);
   const dispatch = useDispatch();
-  const handleDelete = () => dispatch(deletContact());
+  const handleDelete = () => dispatch(deleteContact());
+
+  const getVisibleContacts = () => {
+    return contacts.filter(contact =>
+      contact.name.toLowerCase().includes(filter.toLowerCase())
+    );
+  };
+
+  const visibleContacts = getVisibleContacts();
 
   return (
     <ul className={css.contactList}>
-      {contacts &&
-        contacts.map(contact => (
+      {visibleContacts &&
+        visibleContacts.map(contact => (
           <li className={css.contactList__item} key={contact.id}>
             {contact.name + ': ' + contact.number}
             <button
