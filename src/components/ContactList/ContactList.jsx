@@ -1,5 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import css from './ContactList.module.css';
 
 import { useSelector, useDispatch } from 'react-redux';
@@ -9,7 +9,7 @@ import { deletContact } from 'redux/contactsSlice';
 const ContactList = () => {
   const contacts = useSelector(getVisibleContacts);
   const dispatch = useDispatch();
-  const handleDelete = () => dispatch(deletContact);
+  const handleDelete = () => dispatch(deletContact());
 
   return (
     <ul className={css.contactList}>
@@ -31,8 +31,8 @@ const ContactList = () => {
   );
 };
 
-ContactList.propTypes = {
-  contacts: PropTypes.array.isRequired,
-};
+// ContactList.propTypes = {
+//   contacts: PropTypes.array.isRequired,
+// };
 
 export default ContactList;
