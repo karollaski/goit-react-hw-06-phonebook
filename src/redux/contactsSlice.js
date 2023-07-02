@@ -6,7 +6,6 @@ const contacts = load('contacts') !== undefined ? load('contacts') : [];
 const contactsInitialState = {
   items: contacts,
 };
-// const contactsInitialState = contacts;
 
 const contactsSlice = createSlice({
   name: 'contacts',

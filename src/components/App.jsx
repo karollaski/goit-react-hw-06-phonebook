@@ -1,4 +1,3 @@
-// import { nanoid } from 'nanoid';
 import { getContacts } from 'redux/selectors';
 import { useSelector } from 'react-redux/es/hooks/useSelector';
 
