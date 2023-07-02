@@ -10,7 +10,7 @@ const ContactList = () => {
   const contacts = useSelector(getContacts);
   const filter = useSelector(getFilter);
   const dispatch = useDispatch();
-  const handleDelete = () => dispatch(deleteContact());
+  const handleDelete = id => dispatch(deleteContact(id));
 
   const getVisibleContacts = () => {
     return contacts.filter(contact =>
@@ -30,7 +30,7 @@ const ContactList = () => {
               className={css.contactList__btn}
               type="button"
               name="delete"
-              onClick={handleDelete}
+              onClick={() => handleDelete(contact.id)}
             >
               Delete
             </button>
